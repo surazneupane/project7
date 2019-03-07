@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <style>
+        #formContainer {
+
+            margin-left: 500px;
+            margin-right: 500px;
+            padding: 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            box-shadow: 0 50px 400px 0 rgba(100, 105, 105, 0.9);
+
+        }
+
+        input {
+            margin-top: 5px;
+
+            border: 2px solid black;
+            border-radius: 6px;
+            height: 20px;
+            width: 60%;
+
+        }
+
+        body {
+
+        }
+
+        label {
+
+            font-size: 15px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        h1,  h4 {
+            text-align: center;
+
+            color: olive;
+            box-shadow: 0 50px 400px 0 rgba(200, 205, 105, 0.9);
+        }
+
+        h4 {
+
+            color: red;
+
+        }
+
+        button {
+
+            height: 30px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+<form th:name="loginForm" th:action="@{/login}" th:object="${loginData}" th:method="post"
+      th:onsubmit="return validate()">
+    <h1>Sign Up Form</h1>
+    <h4 th:text="${message}"></h4>
+    <div id="formContainer">
+        <label th:for="*{username}">User Name:</label>
+        <input type="text" th:field="*{username}">
+        <br> <br>
+        <label th:for="*{userpassword}">Password:</label>
+        <input type="password" th:field="*{userpassword}">
+        <br> <br>
+
+
+
+
+        <button type="submit">Login</button>
+        <button><a href="/signup"> Signup</a></button>
+
+
+    </div>
+
+</form>
+
+</body>
+</html>

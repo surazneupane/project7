@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+<style>
+    #formContainer {
+
+        margin-left: 500px;
+        margin-right: 500px;
+        padding: 20px;
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 0 50px 400px 0 rgba(100, 105, 105, 0.9);
+
+    }
+
+    input {
+        margin-top: 5px;
+
+        border: 2px solid black;
+        border-radius: 6px;
+       height: 20px;
+        width: 60%;
+
+    }
+
+    body {
+
+
+    }
+
+    label {
+
+        font-size: 15px;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    h1 ,h3,h4{
+        text-align: center;
+
+        color: olive;
+box-shadow: 0 50px 400px 0 rgba(200, 205, 105, 0.9);
+    }
+    h3{
+
+        color:red;
+
+    }
+    h4{
+        color:green;
+    }
+    button {
+
+        height: 30px;
+
+    }
+
+</style>
+
+    <script>
+
+function validate() {
+    var fullname = document.forms["signForm"]["fullname"].value;
+    var username = document.forms["signForm"]["username"].value;
+    var userpassword = document.forms["signForm"]["userpassword"].value;
+    var repassword = document.forms["signForm"]["repassword"].value;
+
+    var address = document.forms["signForm"]["address"].value;
+    var email = document.forms["signForm"]["email"].value;
+
+    if (fullname == "" || username == "" || userpassword == "" || address == "" || email == "") {
+        alert("Please Fill Up All The Fields");
+        return false;
+    }
+    if (userpassword.length < 8) {
+        alert("Password must contain minimun of Eight Characters");
+        document.forms["signForm"]["userpassword"].focus();
+
+        return false;
+    }
+
+    if (userpassword != repassword) {
+
+        alert("Re-Password Donot Match");
+        document.forms["signForm"]["repassword"].focus();
+        return false;
+
+    }
+}
+
+
+    </script>
+</head>
+<body>
+<form th:name="signForm" th:action="@{/signup}" th:object="${signupData}" th:method="post" th:onsubmit="return validate()">
+    <h1>Sign Up Form</h1>
+    <h3  th:text="${message}"> </h3>
+<h4 th:text="${sucessmessage}"></h4>
+    <div id="formContainer">
+
+
+    <label th:for="*{fullname}">Full Name:</label>
+    <input type="text" th:field="*{fullname}">
+    <br> <br>
+    <label th:for="*{username}">User Name:</label>
+    <input type="text" th:field="*{username}">
+    <br> <br>
+    <label th:for="*{userpassword}">Password:</label>
+    <input type="password" th:field="*{userpassword}">
+    <br> <br>
+    <label th:for="*{repassword}">Re-Password:</label>
+    <input type="password" th:field="*{repassword}">
+    <br> <br>
+
+    <label th:for="*{address}">Address:</label>
+    <input type="text" th:field="*{address}">
+    <br> <br>
+    <label th:for="*{email}">Email:</label>
+    <input type="email" th:field="*{email}">
+    <br> <br>
+
+
+
+    <button type="submit">Submit</button>
+        <button ><a href="/login"> Login</a> </button>
+
+
+
+
+</div>
+
+</form>
+
+</body>
+</html>
