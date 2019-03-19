@@ -9,10 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class SignupController {
-
     @Autowired
     SignupRepo signupRepo;
 

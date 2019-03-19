@@ -52,8 +52,7 @@
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 
-	</dependencies>
-
+</dependencies>
 	<build>
 		<plugins>
 			<plugin>
